@@ -26,6 +26,10 @@ public class CarMasterService {
         return carMasterRepository.findAll();
     }
     
+    public List<CarMaster> getCarsByCarType(Long cartypeId) {
+        return carMasterRepository.findByCartypeId_CartypeId(cartypeId);
+    }
+
     public Optional<CarMaster> updateCar(Long id, CarMaster carDetails) {
         return carMasterRepository.findById(id).map(car -> {
             car.setCarTypeId(carDetails.getCarTypeId());

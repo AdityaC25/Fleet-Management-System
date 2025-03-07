@@ -19,6 +19,7 @@ public class CarMaster {
 
     @ManyToOne
     @JoinColumn(name = "cartypeId", nullable = false)
+    
     private CarTypeMaster cartypeId;  	
     
     private String carName;  

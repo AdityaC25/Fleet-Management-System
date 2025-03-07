@@ -24,9 +24,7 @@ public class BookingDetailController {
 	private BookingDetailService  bookingdetailservice;
 	@GetMapping("/bookingdetails")
 	public List<BookingDetail> getAllAddOns() {
-		
-		return bookingdetailservice.getBookingDetail();
-		
+		return bookingdetailservice.getBookingDetail();	                                           
 	}
 	
 	@PostMapping("/addbookingdetails")
@@ -48,4 +46,5 @@ public class BookingDetailController {
 	public List<BookingDetail> getBookingDetailByBookingId(@PathVariable int booking_id) {
 		return bookingdetailservice.getBookingDetailByBookingId(booking_id);
 	}
+	
 }

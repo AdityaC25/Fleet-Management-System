@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\latest",
+    "\\latest\\Fleet_Management",
+    "\\latest\\Fleet_Management\\bin\\Debug",
+    "\\latest\\Fleet_Management\\bin\\Debug\\net8.0",
+    "\\latest\\Fleet_Management\\Controllers",
+    "\\latest\\Fleet_Management\\Exceptions",
+    "\\latest\\Fleet_Management\\Middleware",
+    "\\latest\\Fleet_Management\\Repository"
+  ],
+  "SelectedNode": "\\latest\\Fleet_Management\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}

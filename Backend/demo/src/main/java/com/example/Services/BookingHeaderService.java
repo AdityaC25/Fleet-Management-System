@@ -1,6 +1,7 @@
 package com.example.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -13,4 +14,8 @@ public interface BookingHeaderService {
 	void deleteBooking (Long bookingId);
 	public BookingHeader save(BookingHeader booking);
 	 List<BookingHeaderDTO> getBookingDetailsByEmailId(String emailId);
+	 Optional<BookingHeader> getBookingById(Long bookingId);
+	 List<BookingHeaderDTO> getAllBookings();
+
+
 }

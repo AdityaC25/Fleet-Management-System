@@ -20,7 +20,7 @@ public class BookingDetail {
     @ManyToOne
     @JoinColumn(nullable = false, name="bookingId",referencedColumnName="bookingId")
     @JsonBackReference // Prevent infinite recursion
-    private BookingHeader bookingId;  // Foreign key to Booking entity
+    private BookingHeader booking;  // Foreign key to Booking entity
 
     private Long addonId;  
 
@@ -35,11 +35,11 @@ public class BookingDetail {
 	}
 
 	public BookingHeader getBookingId() {
-		return bookingId;
+		return booking;
 	}
 
-	public void setBookingId(BookingHeader bookingId) {
-		this.bookingId = bookingId;
+	public void setBookingId(BookingHeader booking) {
+		this.booking = booking;
 	}
 
 	public Long getAddonId() {
@@ -58,10 +58,10 @@ public class BookingDetail {
 		this.addonRate = addonRate;
 	}
 
-	public BookingDetail(Long bookingAddonId, BookingHeader bookingId, Long addonId, Double addonRate) {
+	public BookingDetail(Long bookingAddonId, BookingHeader booking, Long addonId, Double addonRate) {
 		super();
 		this.bookingDetailId = bookingAddonId;
-		this.bookingId = bookingId;
+		this.booking = booking;
 		this.addonId = addonId;
 		this.addonRate = addonRate;
 	}  
@@ -72,7 +72,7 @@ public class BookingDetail {
 
 	@Override
 	public String toString() {
-		return "BookingDetail [bookingAddonId=" + bookingDetailId + ", bookingId=" + bookingId + ", addonId=" + addonId
+		return "BookingDetail [bookingAddonId=" + bookingDetailId + ", booking=" + booking + ", addonId=" + addonId
 				+ ", addonRate=" + addonRate + "]";
 	}
     

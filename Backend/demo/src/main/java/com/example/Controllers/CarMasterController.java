@@ -49,5 +49,14 @@ public class CarMasterController {
         }
         return ResponseEntity.notFound().build();
     }
+    
+    @GetMapping("/type/{cartypeId}")
+    public ResponseEntity<List<CarMaster>> getCarsByCarType(@PathVariable Long cartypeId) {
+        List<CarMaster> cars = carMasterService.getCarsByCarType(cartypeId);
+        if (cars.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(cars);
+    }
 }
 

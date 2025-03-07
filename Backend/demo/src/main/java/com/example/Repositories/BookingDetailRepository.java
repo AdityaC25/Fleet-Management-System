@@ -15,7 +15,7 @@ public interface BookingDetailRepository extends JpaRepository<BookingDetail,Lon
 	@Modifying
     @Transactional
 	@Query(value = "Delete FROM booking_detail WHERE booking_id = :booking_id", nativeQuery = true)
-	void deletebybookingid(@Param("booking_id") int booking_id);
+	void deleteByBookingId(@Param("booking_id") int booking_id);
 	
 	@Query(value = "select * from booking_detail WHERE booking_id = :booking_id",nativeQuery = true)
 	List<BookingDetail> getBookingDetailByBookingId(@Param("booking_id") int booking_id);

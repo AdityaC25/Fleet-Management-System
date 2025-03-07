@@ -9,3 +9,4 @@ public class SecurityConstant {
 
     public static final long JWT_EXPIRATION_TIME = 30 * 60 * 1000;  
 }
+

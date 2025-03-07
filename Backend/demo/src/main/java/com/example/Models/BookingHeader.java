@@ -27,6 +27,7 @@ public class BookingHeader {
    
     @ManyToOne
     @JoinColumn(name = "customerId")
+ 
     private CustomerMaster customer;  
 
     @Column(nullable = false)
@@ -37,17 +38,20 @@ public class BookingHeader {
     
     @ManyToOne
     @JoinColumn(name = "carId", nullable = false)  
+   
     private CarMaster car;  
 
     @ManyToOne
     @JoinColumn(name = "cartypeId",referencedColumnName = "cartypeId", nullable = false)  
+   
     private CarTypeMaster cartype;  
     
   
 
-    @OneToMany(mappedBy = "bookingId", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference // Prevent infinite recursion
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<BookingDetail> bookingDetails = new ArrayList<BookingDetail>();
+
 
     
     @Column(nullable = false)
@@ -67,17 +71,26 @@ public class BookingHeader {
     
     @Column(nullable=false)
     private String emailId;
-    
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "invoice_id")
+//    private InvoiceHeader invoiceHeader;
+//    public InvoiceHeader getInvoiceHeader() {
+//		return invoiceHeader;
+//	}
+//
+//	public void setInvoiceHeader(InvoiceHeader invoiceHeader) {
+//		this.invoiceHeader = invoiceHeader;
+//	}
 
-    private Double dailyrate;  // Reference to daily rate
+	private Double dailyrate;  // Reference to daily rate
 
     private Double weeklyrate;  // Reference to weekly rate
 
     private Double monthlyrate;  // Reference to monthly rate
     
-    private int pickup_hubId;
+    private String pickup_hubAddress;
 	
-    private int return_hubId;
+    private String return_hubAddress;
 
 	public Long getBookingId() {
 		return bookingId;
@@ -249,20 +262,20 @@ public class BookingHeader {
 		this.monthlyrate = monthlyrate;
 	}
 
-	public int getPickup_hubId() {
-		return pickup_hubId;
+	public String getPickup_hubAddress() {
+		return pickup_hubAddress;
 	}
 
-	public void setPickup_hubId(int pickup_hubId) {
-		this.pickup_hubId = pickup_hubId;
+	public void setPickup_hubAddress(String pickup_hubAddress) {
+		this.pickup_hubAddress = pickup_hubAddress;
 	}
 
-	public int getReturn_hubId() {
-		return return_hubId;
+	public String getReturn_hubAddress() {
+		return return_hubAddress;
 	}
 
-	public void setReturn_hubId(int return_hubId) {
-		this.return_hubId = return_hubId;
+	public void setReturn_hubAddress(String return_hubAddress) {
+		this.return_hubAddress = return_hubAddress;
 	}
 
 	
@@ -270,7 +283,7 @@ public class BookingHeader {
     public BookingHeader(Long bookingId, LocalDate bookingdate, CustomerMaster customer, LocalDate startdate,
 			LocalDate enddate, CarMaster car, CarTypeMaster cartype, List<BookingDetail> bookingDetails,
 			String firstname, String lastname, String address, String state, String pin, String emailId,
-			Double dailyrate, Double weeklyrate, Double monthlyrate, int pickup_hubId, int return_hubId) {
+			Double dailyrate, Double weeklyrate, Double monthlyrate, String pickup_hubAddress, String return_hubAddress) {
 		super();
 		this.bookingId = bookingId;
 		this.bookingdate = bookingdate;
@@ -289,8 +302,8 @@ public class BookingHeader {
 		this.dailyrate = dailyrate;
 		this.weeklyrate = weeklyrate;
 		this.monthlyrate = monthlyrate;
-		this.pickup_hubId = pickup_hubId;
-		this.return_hubId = return_hubId;
+		this.pickup_hubAddress = pickup_hubAddress;
+		this.return_hubAddress = return_hubAddress;
 	}
 
 	public BookingHeader() {
@@ -299,13 +312,15 @@ public class BookingHeader {
 
 	@Override
 	public String toString() {
-		return "BookingHeader [bookingId=" + bookingId + ", bookingdate=" + bookingdate + ", customerId=" + customer
-				+ ", startdate=" + startdate + ", enddate=" + enddate + ", carId=" + car + ", cartypeId=" + cartype
+		return "BookingHeader [bookingId=" + bookingId + ", bookingdate=" + bookingdate + ", customer=" + customer
+				+ ", startdate=" + startdate + ", enddate=" + enddate + ", car=" + car + ", cartype=" + cartype
 				+ ", bookingDetails=" + bookingDetails + ", firstname=" + firstname + ", lastname=" + lastname
 				+ ", address=" + address + ", state=" + state + ", pin=" + pin + ", emailId=" + emailId + ", dailyrate="
-				+ dailyrate + ", weeklyrate=" + weeklyrate + ", monthlyrate=" + monthlyrate + ", pickup_hubId="
-				+ pickup_hubId + ", return_hubId=" + return_hubId + "]";
+				+ dailyrate + ", weeklyrate=" + weeklyrate + ", monthlyrate=" + monthlyrate + ", pickup_hubAddress="
+				+ pickup_hubAddress + ", return_hubAddress=" + return_hubAddress + "]";
 	}
+
+	
 
 	
     

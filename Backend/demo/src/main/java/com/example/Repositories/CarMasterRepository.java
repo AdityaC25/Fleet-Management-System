@@ -10,6 +10,6 @@ import com.example.Models.CarMaster;
 
 @Repository
 public interface CarMasterRepository extends JpaRepository<CarMaster, Long> {
-	 
+	 List<CarMaster> findByCartypeId_CartypeId(Long cartypeId);
 }
 

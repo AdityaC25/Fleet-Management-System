@@ -9,5 +9,6 @@ import com.example.Models.UserLogin;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserLogin, Long>{
+	
 	UserLogin findByEmail(String email);
 }

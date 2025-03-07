@@ -3,12 +3,32 @@ package com.example.dto;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.example.Models.BookingHeader;
+
+import jakarta.persistence.Column;
+
 public class BookingHeaderDTO {
     private Long bookingId;
     private LocalDate bookingdate;
     private String firstname;
     private String lastname;
-    public Long getBookingId() {
+  
+    private LocalDate startdate;  
+
+    private LocalDate enddate;  
+    
+	public void setStartdate(LocalDate startdate) {
+		this.startdate = startdate;
+	}
+
+	public LocalDate getEnddate() {
+		return enddate;
+	}
+    public LocalDate getStartdate() {
+		return startdate;
+	}
+
+	public Long getBookingId() {
 		return bookingId;
 	}
 
@@ -72,20 +92,20 @@ public class BookingHeaderDTO {
 		this.monthlyrate = monthlyrate;
 	}
 
-	public int getPickup_hubId() {
-		return pickup_hubId;
+	public String getPickup_hubAddress() {
+		return pickup_hubAddress;
 	}
 
-	public void setPickup_hubId(int pickup_hubId) {
-		this.pickup_hubId = pickup_hubId;
+	public void setPickup_hubAddress(String pickup_hubAddress) {
+		this.pickup_hubAddress = pickup_hubAddress;
 	}
 
-	public int getReturn_hubId() {
-		return return_hubId;
+	public String getReturn_hubAddress() {
+		return return_hubAddress;
 	}
 
-	public void setReturn_hubId(int return_hubId) {
-		this.return_hubId = return_hubId;
+	public void setReturn_hubAddress(String return_hubAddress) {
+		this.return_hubAddress = return_hubAddress;
 	}
 
 	public List<BookingDetailDTO> getBookingDetails() {
@@ -100,13 +120,13 @@ public class BookingHeaderDTO {
     private Double dailyrate;
     private Double weeklyrate;
     private Double monthlyrate;
-    private int pickup_hubId;
-    private int return_hubId;
+    private String pickup_hubAddress;
+    private String return_hubAddress;
     private List<BookingDetailDTO> bookingDetails;
 
     public BookingHeaderDTO(Long bookingId, LocalDate bookingdate, String firstname, String lastname, 
-                            String emailId, Double dailyrate, Double weeklyrate, Double monthlyrate, 
-                            int pickup_hubId, int return_hubId, List<BookingDetailDTO> bookingDetails) {
+                            String emailId, Double dailyrate, Double weeklyrate, Double monthlyrate,LocalDate startdate,LocalDate enddate,
+                            String pickup_hubAddress, String return_hubAddress, List<BookingDetailDTO> bookingDetails) {
         this.bookingId = bookingId;
         this.bookingdate = bookingdate;
         this.firstname = firstname;
@@ -115,10 +135,13 @@ public class BookingHeaderDTO {
         this.dailyrate = dailyrate;
         this.weeklyrate = weeklyrate;
         this.monthlyrate = monthlyrate;
-        this.pickup_hubId = pickup_hubId;
-        this.return_hubId = return_hubId;
+        this.pickup_hubAddress = pickup_hubAddress;
+        this.return_hubAddress = return_hubAddress;
         this.bookingDetails = bookingDetails;
+        this.startdate =startdate;
+        this.enddate=enddate;
     }
+   
 
     // Getters and setters
 }
